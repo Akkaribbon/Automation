@@ -43,7 +43,7 @@ public class StartPage extends PageObject{
         return this;
     }
 
-    public StartPage changeCurrecnyToGbp() {
+    public StartPage changeCurrencyToGbp() {
         logger.debug("Change currency to GBP");
         chooseCurrency.click();
         gbpCurrency.click();

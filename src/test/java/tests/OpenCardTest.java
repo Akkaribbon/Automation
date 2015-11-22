@@ -17,8 +17,8 @@ public class OpenCardTest extends BaseTest{
     @Test
     public void shoppingCardTest () {
         startPage
-                .changeCurrecnyToGbp()
-                .changeCurrecnyToGbp()
+                .changeCurrencyToGbp()
+                .changeCurrencyToGbp()
                 .searchForItem("iPod")
                 .selectAllItems()
                 .clickOnComparisonPageLink()
@@ -32,9 +32,9 @@ public class OpenCardTest extends BaseTest{
                 .addItemToCart();
         Assert.assertTrue(comparisonPage.checkIfSuccessAlertAppears(),
                 "Comparison page wasn't changed/ item was not removed or added to cart");
-        logger.info(comparisonPage.getTextFromSuccessAlertForAddingItem());
-//        Assert.assertTrue(comparisonPage.getTextFromSuccessAlertForAddingItem().startsWith("Success: You have added"),
-//                "Incorrect text on success alert after adding item");
+      //  logger.info(comparisonPage.getTextFromSuccessAlertForAddingItem());
+      Assert.assertTrue(comparisonPage.getTextFromSuccessAlertForAddingItem().startsWith("Success: You have added"),
+                "Incorrect text on success alert after adding item");
         comparisonPage
                 .goToCartPage();
         Assert.assertEquals(comparisonPage.getPriceFromComparisonPage(),cartPage.getPriceFromCartPage(),

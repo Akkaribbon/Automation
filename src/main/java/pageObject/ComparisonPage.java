@@ -18,14 +18,16 @@ public class ComparisonPage extends PageObject{
         super(driver);
     }
 
+    private String price;
+
     @FindBy(xpath = "//table[@class='table table-bordered']/tbody/tr[6]/td[2]")
-    WebElementFacade availability;
+    WebElementFacade availabilityColumn;
 
     @FindBy(xpath = "//table[@class='table table-bordered']/tbody/tr[1]/td[2]")
-    WebElementFacade productName;
+    WebElementFacade productNameColumn;
 
     @FindBy(xpath = "//table[@class='table table-bordered']/tbody/tr[3]/td[2]")
-    WebElementFacade price;
+    WebElementFacade priceColumn;
 
     @FindBy(className = "btn-danger")
     WebElementFacade removeButton;
@@ -39,16 +41,20 @@ public class ComparisonPage extends PageObject{
     @FindBy(xpath = "//a[@title='Shopping Cart']")
     WebElementFacade shoppingCart;
 
+
     public String getTextFromAvailabilityColumn () {
-        return availability.getText();
+        return availabilityColumn.getText();
     }
 
     public String getTextFromProductNameColumn () {
-        return productName.getText();
+        return productNameColumn.getText();
     }
 
     public String getPriceFromComparisonPage() {
-        return price.getText();
+        if(price == null) {
+            price = priceColumn.getText();
+        }
+        return price;
     }
 
     public ComparisonPage removeOutOfStockItem() {
@@ -69,7 +75,6 @@ public class ComparisonPage extends PageObject{
     }
 
     public boolean checkIfSuccessAlertAppears () {
-        successAlertForProductModify.waitUntilVisible();
         return successAlertForProductModify.isPresent();
     }
 
@@ -78,6 +83,7 @@ public class ComparisonPage extends PageObject{
     }
 
     public String getTextFromSuccessAlertForAddingItem() {
+        waitABit(300);
         return successAlertForProductModify.getText();
     }
 

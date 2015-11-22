@@ -34,6 +34,7 @@ public class BaseTest {
         cartPage = new CartPage(driver);
 
         driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
     }
 
     @BeforeMethod
@@ -42,9 +43,9 @@ public class BaseTest {
             .goToOpenCartStartPage("http://demo.opencart.com/");
     }
 
-//    @AfterClass
- //   public void tearDown () {
- //       driver.quit();
-  //  }
+    @AfterClass
+    public void tearDown () {
+       driver.quit();
+    }
 
 }
