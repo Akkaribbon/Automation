@@ -1,2 +1,2 @@
-# Automation
+# Selenium
 Selenium tests
